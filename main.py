@@ -6,8 +6,7 @@ import pyperclip
 from PIL import Image, ImageEnhance, ImageOps, ImageFilter
 
 
-def getLocation():
-    
+def getLocation():    
     time.sleep(3)
     return pyautogui.position()
 
@@ -23,19 +22,22 @@ def getRank(i):
     image = image.resize((image.width * 2, image.height * 2), Image.Resampling.LANCZOS)
     # Convert to grayscale
     image = ImageOps.grayscale(image)
-
     # Apply binary thresholding
-    image = ImageOps.autocontrast(image)
-    image = ImageOps.invert(image)
+    # Enhance the image (contrast/sharpen) to improve OCR accuracy
+    image = ImageEnhance.Contrast(image).enhance(2.0)
+    image = image.filter(ImageFilter.SHARPEN)
+    
+    # Optional: Skip thresholding if it doesn't help
+    # Apply binary thresholding if necessary
     threshold = 128
     image = image.point(lambda p: 255 if p > threshold else 0)
-    #print("screenshot taken")
+    print("screenshot taken")
     image.save("screenshot_rank.png")
     text = pytesseract.image_to_string(image)
-    #print(text)
+    print(text)
     #image = Image.open("screenshot_rank.png")
     
-    #image.show()
+    image.show()
 
     return text
 
@@ -109,6 +111,10 @@ def updatePlayer(i,growth):
             # Retrieve the copied text from the clipboard
             CA = pyperclip.paste()
             CA=int(CA)
+            if CA >= 150:
+                if CA>=180:
+                    growth=1
+                growth=min(growth,3)
             CA+=growth
             # Convert the updated CA back to a string
             CA = str(CA)
@@ -130,6 +136,10 @@ def updatePlayer(i,growth):
         time.sleep(0.5)  
         # Retrieve the copied text from the clipboard
         PA = int(pyperclip.paste())
+        if PA >= 150:
+                if PA>=180:
+                    growth=1
+                growth=min(growth,3)
         PA+=growth
         # Convert the updated CA back to a string
         PA = str(PA)
@@ -160,6 +170,7 @@ def updateStat():
     while growth:
         rank=getRank(i)
         rank = rank.strip()
+        print("rank is:",rank)
         print(rank)        
         if rank=="2nd":
             growth=3
@@ -168,9 +179,13 @@ def updateStat():
         elif rank=="":
             print("tie")
         else:
-            growth=0            
+            growth=0
+
+        if growth == 0:  # If growth is set to 0, exit the loop immediately
+            break            
         updatePlayer(i,growth)
         i+=1
+    return 0
 
 def scrollDown():
     time.sleep(0.5) 
@@ -375,15 +390,15 @@ def openGoalkeeping():
 screen_width, screen_height = pyautogui.size()
 
 def main():
-    #getRank(7)
-    time.sleep(0.5) 
-    openGeneral()
-    time.sleep(0.5) 
-    openAttacking()
-    time.sleep(0.5) 
-    openDefending()
-    time.sleep(0.5) 
-    openGoalkeeping()
+    getRank(6)
+    # time.sleep(0.5) 
+    # openGeneral()
+    # time.sleep(0.5) 
+    # openAttacking()
+    # time.sleep(0.5) 
+    # openDefending()
+    # time.sleep(0.5) 
+    # openGoalkeeping()
 
 if __name__ == "__main__":
     main()
