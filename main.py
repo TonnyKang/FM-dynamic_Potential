@@ -223,7 +223,7 @@ def openGeneral():
 
     time.sleep(0.1) 
     # open Distance Covered
-    pyautogui.moveTo(screen_width*0.25, screen_height*0.525)    
+    pyautogui.moveTo(screen_width*0.26458333333333334, screen_height*0.5033333333333333)    
     pyautogui.click()
     updateStat()
 
@@ -272,7 +272,7 @@ def openAttacking():
 
     # open Chances created
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.26822916, screen_height*0.2283)    
+    pyautogui.moveTo(screen_width*0.27760416666666665, screen_height*0.24416666666666667)    
     pyautogui.click()
     updateStat()
 
@@ -280,7 +280,7 @@ def openAttacking():
 
     # open Dribbles made
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.25572916, screen_height*0.43916)    
+    pyautogui.moveTo(screen_width*0.2359375, screen_height*0.46416666666666667)    
     pyautogui.click()
     updateStat()
 
@@ -289,7 +289,7 @@ def openAttacking():
 
     # open Progressive passes
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.2583, screen_height*0.6)    
+    pyautogui.moveTo(screen_width*0.2864583333333333, screen_height*0.6258333333333334)    
     pyautogui.click()
     updateStat()
 
@@ -298,7 +298,7 @@ def openAttacking():
 
     # open high intensity sprints
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.265625, screen_height*0.6383)    
+    pyautogui.moveTo(screen_width*0.28958333333333336, screen_height*0.675)    
     pyautogui.click()
     updateStat()
 
@@ -410,6 +410,9 @@ def main():
     openDefending()
     time.sleep(0.1) 
     openGoalkeeping()
+    
+    
+
 
 if __name__ == "__main__":
     main()
