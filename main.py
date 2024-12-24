@@ -41,12 +41,15 @@ def getRank(i):
 def openPlayer(i):
     time.sleep(1)
     gap=i*0.0525
-    pyautogui.moveTo(screen_width*0.436458, screen_height*(gap+0.2008))
+    pyautogui.moveTo(screen_width*0.4203125, screen_height*(gap+0.2008))
     pyautogui.click()
     return 1
 
 def getPlayerAge():
+    ageCount=0
     while True:  # Keep trying until valid age is obtained
+        if ageCount >5:
+            return 31
         region = (math.floor(0.19*screen_width), math.floor((0.135)*screen_height), math.ceil(0.018*screen_width), math.ceil(0.027*screen_height))
         image = pyautogui.screenshot(region=region)
         # Resize the image using the updated resampling method
@@ -77,6 +80,7 @@ def getPlayerAge():
         else:
             print("Invalid age detected, retrying...")
             # You might want to add a small delay here to avoid tight looping
+            ageCount=ageCount+1
             time.sleep(0.5)
 
 def updatePlayer(i,growth):
@@ -189,6 +193,8 @@ def updateStat():
             break            
         updatePlayer(i,growth)
         i+=1
+        if i>14: # Out of Screen
+            break
     return 0
 
 def scrollDown():
@@ -206,65 +212,65 @@ def scrollUp():
 def openGeneral():
     time.sleep(0.1) 
     # open general
-    pyautogui.moveTo(screen_width*0.2, screen_height*0.175)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.175)    
     pyautogui.click()
 
     # open Appearance
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.25, screen_height*0.2)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.2)    
     pyautogui.click()
     updateStat()
 
     time.sleep(0.1) 
     # open Player of the Match
-    pyautogui.moveTo(screen_width*0.25, screen_height*0.465)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.465)    
     pyautogui.click()
     updateStat()
 
     time.sleep(0.1) 
     # open Distance Covered
-    pyautogui.moveTo(screen_width*0.26458333333333334, screen_height*0.5033333333333333)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.5033333333333333)    
     pyautogui.click()
     updateStat()
 
     time.sleep(0.1) 
     # open Headers Won
-    pyautogui.moveTo(screen_width*0.25, screen_height*0.655)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.655)    
     pyautogui.click()
     updateStat()
 
     time.sleep(0.1) 
     # open Possesion Won
-    pyautogui.moveTo(screen_width*0.25, screen_height*0.705)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.705)    
     pyautogui.click()
     updateStat()
 
     # Close general
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.2, screen_height*0.175)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.175)    
     pyautogui.click()
 
 def openAttacking():
     time.sleep(0.1) 
     # open Attack
-    pyautogui.moveTo(screen_width*0.214583, screen_height*0.21583)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.21583)    
     pyautogui.click()
     
     # open goals
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.19739583, screen_height*0.2475)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.2475)    
     pyautogui.click()
     updateStat()
 
     # open assists
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.234375, screen_height*0.8075)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.8075)    
     pyautogui.click()
     updateStat()
 
     # open Key Passes
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.2671875, screen_height*0.8983)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.8983)    
     pyautogui.click()
     updateStat()
 
@@ -272,7 +278,7 @@ def openAttacking():
 
     # open Chances created
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.27760416666666665, screen_height*0.24416666666666667)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.24416666666666667)    
     pyautogui.click()
     updateStat()
 
@@ -280,7 +286,7 @@ def openAttacking():
 
     # open Dribbles made
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.2359375, screen_height*0.46416666666666667)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.46416666666666667)    
     pyautogui.click()
     updateStat()
 
@@ -289,7 +295,7 @@ def openAttacking():
 
     # open Progressive passes
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.2864583333333333, screen_height*0.6258333333333334)    
+    pyautogui.moveTo(screen_width*0.295, screen_height*0.6)    
     pyautogui.click()
     updateStat()
 
@@ -298,7 +304,7 @@ def openAttacking():
 
     # open high intensity sprints
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.28958333333333336, screen_height*0.675)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.675)    
     pyautogui.click()
     updateStat()
 
@@ -306,94 +312,94 @@ def openAttacking():
 
     # close Attack
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.214583, screen_height*0.21583)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.21583)    
     pyautogui.click()
 
 def openDefending():
     time.sleep(0.1) 
     # open Defending
-    pyautogui.moveTo(screen_width*0.20572916, screen_height*0.2575)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.2575)    
     pyautogui.click()
 
     # open Tackles Won
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.25989583, screen_height*0.3283)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.3283)    
     pyautogui.click()
     updateStat()
 
     # open Key Tackles
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.26927083, screen_height*0.4583)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.4583)    
     pyautogui.click()
     updateStat()
 
     # open Key Headers
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.239583, screen_height*0.5008333333333334)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.5008333333333334)    
     pyautogui.click()
     updateStat()
 
     # open Interceptions made
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.27760416, screen_height*0.5483)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.5483)    
     pyautogui.click()
     updateStat()
 
     # open Blocks
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.277083, screen_height*0.59)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.59)    
     pyautogui.click()
     updateStat()
 
     # open Clearances
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.26145833333333335, screen_height*0.635)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.635)    
     pyautogui.click()
     updateStat()
 
     # open Shots Blocked
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.27552083, screen_height* 0.716)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height* 0.716)    
     pyautogui.click()
     updateStat()
 
     # open Pressure Completed
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.2822916, screen_height* 0.8483333333333334)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height* 0.8483333333333334)    
     pyautogui.click()
     updateStat()
 
     # close Defending
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.20572916, screen_height*0.2575)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.2575)    
     pyautogui.click()
 
 def openGoalkeeping():
     time.sleep(0.1) 
     # open GoalKeeping
-    pyautogui.moveTo(screen_width*0.2416, screen_height*0.29416)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.29416)    
     pyautogui.click()
 
     # open Clean sheets
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.26197916, screen_height*0.3675)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.3675)    
     pyautogui.click()
     updateStat()
 
     # open Saves Held
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.29583, screen_height*0.4075)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.4075)    
     pyautogui.click()
     updateStat()
 
     # open Saves Parried
     time.sleep(0.1) 
-    pyautogui.moveTo(screen_width*0.277083, screen_height*0.45916666666666667)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.45916666666666667)    
     pyautogui.click()
     updateStat()
 
     # close Goalkeeping
-    pyautogui.moveTo(screen_width*0.2416, screen_height*0.29416)    
+    pyautogui.moveTo(screen_width*0.29791, screen_height*0.29416)    
     pyautogui.click()
 
 
@@ -410,6 +416,9 @@ def main():
     openDefending()
     time.sleep(0.1) 
     openGoalkeeping()
+    #print(getRatio())
+
+    
     
     
 
