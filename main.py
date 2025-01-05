@@ -49,7 +49,7 @@ def getPlayerAge():
     ageCount=0
     while True:  # Keep trying until valid age is obtained
         if ageCount >5:
-            return 31
+            return 29
         region = (math.floor(0.19*screen_width), math.floor((0.135)*screen_height), math.ceil(0.018*screen_width), math.ceil(0.027*screen_height))
         image = pyautogui.screenshot(region=region)
         # Resize the image using the updated resampling method
